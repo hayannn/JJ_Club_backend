@@ -1,0 +1,48 @@
+package com.jjclub.auth.service;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import com.jjclub.auth.domain.Authority;
+import com.jjclub.auth.domain.User;
+import com.jjclub.auth.repository.UserRepository;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import java.util.List;
+import java.util.stream.Collectors;
+
+@Service
+@RequiredArgsConstructor
+@Slf4j
+public class CustomUserDetailsService implements UserDetailsService {
+
+    private final UserRepository userRepository;
+
+    @Override
+    @Transactional
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return userRepository.findByEmail(username)
+                .map(this::createUserDetails)
+                .orElseThrow(() -> new UsernameNotFoundException(username + " -> 데이터베이스에서 찾을 수 없습니다."));
+    }
+
+    private UserDetails createUserDetails(User user) {
+        List<SimpleGrantedAuthority> authList = user.getAuthorities()
+                .stream()
+                .map(Authority::getAuthorityStatus)
+                .map(SimpleGrantedAuthority::new)
+                .collect(Collectors.toList());
+
+        authList .forEach(o-> log.debug("authList -> {}",o.getAuthority()));
+
+        return new org.springframework.security.core.userdetails.User(
+                String.valueOf(user.getId()),
+                user.getPassword(),
+                //user.getNickName(),
+                authList
+        );
+    }
+}

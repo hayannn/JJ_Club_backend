@@ -1,0 +1,59 @@
+#server:
+  #port: 8085
+  #address: 0.0.0.0
+  #servlet:
+    #encoding:
+      #charset: UTF-8
+      #enabled: true
+      #force: true
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+
+# 배포용 DB 설정
+#spring:
+  #application:
+    #name: auth-server
+  #datasource:
+    #driver-class-name: org.mariadb.jdbc.Driver
+    #url: jdbc:mariadb://127.0.0.1:3306/authserver7?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul
+    #username: root
+    #password: 2470
+
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+  redis:
+    port: 6379
+    host: localhost
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+
+
+# HS512알고리즘, 64byte 이상 secret key 사용
+# echo -n 'my-name-is-byeongil-hello-jwt-hahaha-my-name-is-byeongil-hello-jwt-hahaha' | openssl base64
+jwt:
+  header: Authorization
+  secret: bXktbmFtZS1pcy1ieWVvbmdpbC1oZWxsby1qd3QtaGFoYWhhLW15LW5hbWUtaXMtYnllb25naWwtaGVsbG8tand0LWhhaGFoYQ==
+
+logging:
+  level:
+    me.bi : DEBUG
+
+#배포용 유레카 서버 설정
+#eureka:
+  #instance:
+    #prefer-ip-address: true
+    #ip-address: 3.38.238.203
+  #client:
+    #service-url:
+      #defaultZone: http://13.124.61.86:8761/eureka  # default address

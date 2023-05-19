@@ -14,6 +14,25 @@ spring:
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
 
+  mail:
+    host: smtp.naver.com
+    port: 465
+    username: ${EMAIL_USERNAME}
+    password: ${EMAIL_PASSWORD}
+    properties:
+    mail:
+      smtp:
+      starttls:
+        enable: true
+        required: true
+      auth: true
+      connectiontimeout: 5000
+      timeout: 5000
+      writetimeout: 5000
+      ssl:
+        enable: true
+        trust: smtp.naver.com
+
 # 배포용 DB 설정
 #spring:
   #application:
@@ -57,3 +76,5 @@ logging:
   #client:
     #service-url:
       #defaultZone: http://13.124.61.86:8761/eureka  # default address
+
+

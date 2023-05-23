@@ -30,6 +30,7 @@ public class User {
 
     @Column(name = "phone_number")
     private String phoneNumber;
+
     @Column(name = "user_email", length = 45)
     @JoinTable(name = "email_validation_code",
         joinColumns = {@JoinColumn(name="email",referencedColumnName = "email")})
@@ -72,7 +73,7 @@ public class User {
         if(dto.getPassword() != null) this.password = passwordEncoder.encode(dto.getPassword());
         if(dto.getUserName() != null) this.userName = dto.getUserName();
         if(dto.getNickName() != null) this.nickName = dto.getNickName();
-        if(dto.getPhoneNumber() != null) this.nickName = dto.getPhoneNumber();
+        if(dto.getPhoneNumber() != null) this.phoneNumber = dto.getPhoneNumber();
         if(dto.getMbti() != null) this.mbti = dto.getMbti();
     }
 }

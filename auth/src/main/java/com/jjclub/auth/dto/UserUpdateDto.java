@@ -11,7 +11,6 @@ public class UserUpdateDto {
 
     private String userName;
     private String nickName;
-
     private String phoneNumber;
     private String password;
     private String mbti;

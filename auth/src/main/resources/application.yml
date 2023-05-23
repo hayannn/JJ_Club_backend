@@ -1,6 +1,6 @@
-#server:
-  #port: 8085
-  #address: 0.0.0.0
+server:
+  port: 8081
+  address: 0.0.0.0
   #servlet:
     #encoding:
       #charset: UTF-8
@@ -8,6 +8,8 @@
       #force: true
 
 spring:
+  application:
+  name: jjclub.pe.kr
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: ${DB_URL}
@@ -36,12 +38,12 @@ spring:
 # 배포용 DB 설정
 #spring:
   #application:
-    #name: auth-server
+    #name: jjclub.pe.kr
   #datasource:
-    #driver-class-name: org.mariadb.jdbc.Driver
-    #url: jdbc:mariadb://127.0.0.1:3306/authserver7?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul
-    #username: root
-    #password: 2470
+    #driver-class-name: com.mysql.cj.jdbc.Driver
+    #url: jdbc:mysql://127.0.0.1:3306/auth?useSSL=false&useUnicode=true&allowPublicKeyRetrieval=true
+    #username: dlgkdis801
+    #password: dlgkdis801
 
   servlet:
     multipart:
@@ -67,14 +69,5 @@ jwt:
 logging:
   level:
     me.bi : DEBUG
-
-#배포용 유레카 서버 설정
-#eureka:
-  #instance:
-    #prefer-ip-address: true
-    #ip-address: 3.38.238.203
-  #client:
-    #service-url:
-      #defaultZone: http://13.124.61.86:8761/eureka  # default address
 
 

@@ -1,5 +1,6 @@
 package com.jjclub.auth.domain;
 
+import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -26,4 +27,10 @@ public class EmailValidationCode {
     private String code;
 
     private LocalDateTime createTime;
+
+    @Builder
+    public EmailValidationCode(String email, String code, String createTime) {
+        this.email = email;
+        this.code = code;
+    }
 }

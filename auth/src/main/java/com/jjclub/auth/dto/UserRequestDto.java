@@ -1,5 +1,6 @@
 package com.jjclub.auth.dto;
 
+import com.jjclub.auth.domain.EmailValidationCode;
 import lombok.*;
 import com.jjclub.auth.domain.Authority;
 import com.jjclub.auth.domain.User;
@@ -16,6 +17,7 @@ public class UserRequestDto {
     private String email;
     private String password;
     private String userName;
+    private String nickName;
     private String mbti;
     private Set<Authority> authorities;
 
@@ -24,6 +26,7 @@ public class UserRequestDto {
             .email(email)
             .password(passwordEncoder.encode(password))
             .userName(userName)
+            .nickName(nickName)
             .mbti(mbti)
             .authorities(authorities)
             .build();

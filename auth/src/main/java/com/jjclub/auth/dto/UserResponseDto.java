@@ -1,5 +1,6 @@
 package com.jjclub.auth.dto;
 
+import com.jjclub.auth.domain.EmailValidationCode;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,10 +13,17 @@ public class UserResponseDto {
 
     private String email;
     private String userName;
+
+    private String nickName;
     private String mbti;
 
     public static UserResponseDto of(User user) {
         return new UserResponseDto(
-            user.getEmail(), user.getUserName(), user.getMbti());
+            user.getEmail(), user.getUserName(), user.getNickName(), user.getMbti());
+    }
+
+    public static EmailVerifyDto of(EmailValidationCode emailValidationCode) {
+        return new EmailVerifyDto(
+            emailValidationCode.getEmail(), emailValidationCode.getCode());
     }
 }

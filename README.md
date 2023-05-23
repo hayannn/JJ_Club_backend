@@ -17,7 +17,9 @@ JJ Club 백엔드 - 인증/인가 서버(이하얀)
 > #
 > 
 
-## 인증/인가 서버 API 문서
+## 인증/인가 서버 API
+- 성공 응답의 경우 201은 커스텀한 응답값입니다.
+- 실패 응답의 경우 서버 에러에 해당하는 500 에러를 최소화하기 위해 400 커스텀 에러(자격 증명에 실패하였습니다)로 통일하고, Exception 형태로 어느 곳에서의 실패인지 구분하는 것으로 작성했습니다.
 
 |       서비스        |     Method     |                 URL                   |  시큐리티 인증   |
 | ------------------- | -------------- | ------------------------------------- | --------------- |
@@ -58,11 +60,10 @@ JJ Club 백엔드 - 인증/인가 서버(이하얀)
 - HTTP Status : 400 Bad Request
 ```json
 {
-    "timestamp": "2023-05-23T10:32:44.404+00:00",
-    "status": 400,
-    "error": "Bad Request",
-    "trace": "org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Unexpected character ('}' ...
-    "path": "/api/v1/auth/email"
+    "timestamp": "2023-05-23T11:36:10.674+00:00",
+    "code": "4001102",
+    "error": "org.springframework.http.converter.HttpMessageNotReadableException",
+    "message": "자격 증명에 실패하였습니다."
 }
 ```
 ---
@@ -95,11 +96,10 @@ JJ Club 백엔드 - 인증/인가 서버(이하얀)
 - HTTP Status : 400 Bad Request
 ```json
 {
-    "timestamp": "2023-05-23T10:35:02.259+00:00",
-    "status": 400,
-    "error": "Bad Request",
-    "trace": "org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Unexpected character ('}' (code 125)):...
-    "path": "/api/v1/auth/verifyCode"
+    "timestamp": "2023-05-23T11:36:35.273+00:00",
+    "code": "4001102",
+    "error": "org.springframework.http.converter.HttpMessageNotReadableException",
+    "message": "자격 증명에 실패하였습니다."
 }
 ```
 ---

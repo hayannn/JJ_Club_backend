@@ -28,7 +28,10 @@ http://Cap.jjclub.pe.kr:80/api/v1/auth/email
 <br>
 - 테스트 영상
 
-https://github.com/hayannn/JJ_Club_backend/assets/102213509/b697921a-4c4b-413a-8c5f-bbb4ed66cb37
+
+https://github.com/hayannn/JJ_Club_backend/assets/102213509/c7b7fdf2-48c7-43d9-a69c-f93b3711eced
+
+
 
 <br>
 

@@ -348,10 +348,12 @@ JJ Club 백엔드 - 인증/인가 서버(이하얀)
 
 - 성공
 - HTTP Status : 201 Created
+```json
 {
     "result": "success",
     "data": null
 }
+```
 
 - 실패
 - HTTP Status : 400 Bad Request

@@ -122,8 +122,8 @@ https://github.com/hayannn/JJ_Club_backend/assets/102213509/b697921a-4c4b-413a-8
 {
     "email":"dlgkdis801@jj.ac.kr",
     "password":"1234",
-    "userName":"이하얀",
-    "nickName" : "티티"
+    "nickName" : "티티",
+    "phoneNumber" : "010-1234-5678"
 }
 ```
 
@@ -136,8 +136,9 @@ https://github.com/hayannn/JJ_Club_backend/assets/102213509/b697921a-4c4b-413a-8
     "result": "success",
     "data": {
         "email": "dlgkdis801@jj.ac.kr",
-        "userName": "이하얀",
+        "userName": null,
         "nickName": "티티",
+        "phoneNumber": "010-1234-5678",
         "mbti": null
     }
 }

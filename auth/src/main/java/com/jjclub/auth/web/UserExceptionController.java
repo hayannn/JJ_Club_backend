@@ -1,11 +1,13 @@
 package com.jjclub.auth.web;
 
+import static com.jjclub.auth.web.UserErrorMessage.EXIST_PASSWORD;
 import static com.jjclub.auth.web.UserErrorMessage.EXIST_USER;
 import static com.jjclub.auth.web.UserErrorMessage.NO_SUCH_USER;
 import static com.jjclub.auth.web.UserErrorMessage.NO_MATCH_PASSWORD;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.validation.BindException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -47,6 +49,15 @@ public class UserExceptionController {
         return ExceptionResponse.of(calculateCode(HttpStatus.BAD_REQUEST,
                 NO_MATCH_PASSWORD.getCode()),
             e.getClass().getName(), NO_MATCH_PASSWORD.getMessage());
+    }
+
+    @ExceptionHandler(RuntimeException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ExceptionResponse handleRuntimeException(RuntimeException e) {
+        log.warn("RuntimeException: {}", e);
+        return ExceptionResponse.of(calculateCode(HttpStatus.BAD_REQUEST,
+                EXIST_PASSWORD.getCode()),
+            e.getClass().getName(), EXIST_PASSWORD.getMessage());
     }
 
     private String calculateCode(HttpStatus status, String code) {

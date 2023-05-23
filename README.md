@@ -290,8 +290,9 @@ https://github.com/hayannn/JJ_Club_backend/assets/102213509/c7b7fdf2-48c7-43d9-a
     "result": "success",
     "data": {
         "email": "dlgkdis801@jj.ac.kr",
-        "userName": "이하얀",
-        "nickName": "티티",
+        "userName": null,
+        "nickName": "티이",
+        "phoneNumber": "010-5678-1234",
         "mbti": null
     }
 }
@@ -319,7 +320,8 @@ https://github.com/hayannn/JJ_Club_backend/assets/102213509/c7b7fdf2-48c7-43d9-a
 ```json
 {
     "nickName": "티이",
-    "password":"4321"
+    "password":"4321",
+    "phoneNumber": "010-5678-1234"
 }
 ```
 
@@ -332,8 +334,9 @@ https://github.com/hayannn/JJ_Club_backend/assets/102213509/c7b7fdf2-48c7-43d9-a
     "result": "success",
     "data": {
         "email": "dlgkdis801@jj.ac.kr",
-        "userName": "이하얀",
+        "userName": null,
         "nickName": "티이",
+        "phoneNumber": "010-5678-1234",
         "mbti": null
     }
 }

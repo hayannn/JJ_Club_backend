@@ -18,6 +18,8 @@ public class UserRequestDto {
     private String password;
     private String userName;
     private String nickName;
+
+    private String phoneNumber;
     private String mbti;
     private Set<Authority> authorities;
 
@@ -27,6 +29,7 @@ public class UserRequestDto {
             .password(passwordEncoder.encode(password))
             .userName(userName)
             .nickName(nickName)
+            .phoneNumber(phoneNumber)
             .mbti(mbti)
             .authorities(authorities)
             .build();

@@ -13,13 +13,14 @@ public class UserResponseDto {
 
     private String email;
     private String userName;
-
     private String nickName;
+
+    private String phoneNumber;
     private String mbti;
 
     public static UserResponseDto of(User user) {
         return new UserResponseDto(
-            user.getEmail(), user.getUserName(), user.getNickName(), user.getMbti());
+            user.getEmail(), user.getUserName(), user.getNickName(), user.getPhoneNumber(), user.getMbti());
     }
 
     public static EmailVerifyDto of(EmailValidationCode emailValidationCode) {

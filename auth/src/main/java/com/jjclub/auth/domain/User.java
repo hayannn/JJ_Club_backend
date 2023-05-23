@@ -27,6 +27,9 @@ public class User {
 
     @Column(name = "nickname")
     private String nickName;
+
+    @Column(name = "phone_number")
+    private String phoneNumber;
     @Column(name = "user_email", length = 45)
     @JoinTable(name = "email_validation_code",
         joinColumns = {@JoinColumn(name="email",referencedColumnName = "email")})
@@ -53,9 +56,10 @@ public class User {
     private Set<Authority> authorities = new HashSet<>();
 
     @Builder
-    public User(String email, String userName, String nickName, String password, String mbti, Set<Authority> authorities, LocalDateTime createdAt, LocalDateTime modifiedAt) {
+    public User(String email, String userName, String nickName, String phoneNumber, String password, String mbti, Set<Authority> authorities, LocalDateTime createdAt, LocalDateTime modifiedAt) {
         this.userName = userName;
         this.nickName = nickName;
+        this.phoneNumber = phoneNumber;
         this.email = email;
         this.password = password;
         this.mbti = mbti;
@@ -68,6 +72,7 @@ public class User {
         if(dto.getPassword() != null) this.password = passwordEncoder.encode(dto.getPassword());
         if(dto.getUserName() != null) this.userName = dto.getUserName();
         if(dto.getNickName() != null) this.nickName = dto.getNickName();
+        if(dto.getPhoneNumber() != null) this.nickName = dto.getPhoneNumber();
         if(dto.getMbti() != null) this.mbti = dto.getMbti();
     }
 }

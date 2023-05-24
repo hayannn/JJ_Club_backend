@@ -37,15 +37,16 @@ https://github.com/hayannn/JJ_Club_backend/assets/102213509/c7b7fdf2-48c7-43d9-a
 
 |       서비스        |     Method     |                 URL                   |  시큐리티 인증   |
 | ------------------- | -------------- | ------------------------------------- | --------------- |
-| 이메일 인증번호 발송 |     POST       | /api/v1/auth/email                    |        X        |
-| 이메일 인증         |      POST       | api/v1/auth/verifyCode               |         X        |
-| 회원가입            |      POST      | /api/v1/auth/signup                   |         X        |
-| 로그인              |      POST      | /api/v1/auth/login                    |         X        |
-| 로그아웃            |      GET       | /api/v1/auth/user/logout              |         O        |
-| 토큰 재발급         |      POST      |/api/v1/auth/reissue                   |         O        |
-| 회원정보 조회       |      GET       | /api/v1/auth/user/me                  |         O        |
-| 회원정보 수정       |      PUT       |/api/v1/auth/user/update               |         O        |
-| 회원탈퇴            |     DELETE     | /api/v1/auth/user/me2                 |         O        |
+| 이메일 인증번호 발송   |     POST       | /api/v1/auth/email                    |        X        |
+| 이메일 인증            |      POST       | api/v1/auth/verifyCode               |         X        |
+| 이메일 인증번호 재발급 |     POST       | /api/v1/auth/refreshCode               |        X        |
+| 회원가입               |      POST      | /api/v1/auth/signup                   |         X        |
+| 로그인                 |      POST      | /api/v1/auth/login                    |         X        |
+| 로그아웃               |      GET       | /api/v1/auth/user/logout              |         O        |
+| 토큰 재발급            |      POST      |/api/v1/auth/reissue                   |         O        |
+| 회원정보 조회          |      GET       | /api/v1/auth/user/me                  |         O        |
+| 회원정보 수정          |      PUT       |/api/v1/auth/user/update               |         O        |
+| 회원탈퇴               |     DELETE     | /api/v1/auth/user/me2                 |         O        |
 
 ---
 
@@ -103,6 +104,40 @@ https://github.com/hayannn/JJ_Club_backend/assets/102213509/c7b7fdf2-48c7-43d9-a
 {
     "result": "success",
     "data": "true" //DB의 코드와 입력받은 코드 일치 여부
+}
+```
+
+- 실패
+- HTTP Status : 400 Bad Request
+```json
+{
+    "timestamp": "2023-05-23T11:36:35.273+00:00",
+    "code": "4001102",
+    "error": "org.springframework.http.converter.HttpMessageNotReadableException",
+    "message": "자격 증명에 실패하였습니다."
+}
+```
+---
+
+++추가
+### 이메일 인증번호 재발급
+#### 요청
+
+```json
+{
+    "email": "dlgkdis801@jj.ac.kr"
+}
+```
+
+#### 응답
+
+- 성공
+- HTTP Status : 200 Ok
+
+```json
+{
+    "result": "success",
+    "data": "reissue Email"
 }
 ```
 
